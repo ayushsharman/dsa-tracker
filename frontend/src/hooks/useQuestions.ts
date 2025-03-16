@@ -1,15 +1,7 @@
 import { useState, FormEvent } from 'react';
 import { Question } from '../types/question';
 
-const INITIAL_QUESTIONS: Question[] = [
-    {
-        topic: "Array",
-        name: "Two Sum",
-        done: false,
-        link: "https://leetcode.com/problems/two-sum",
-        notes: ""
-    }
-];
+
 
 const EMPTY_FORM: Question = {
     topic: "",
@@ -20,7 +12,7 @@ const EMPTY_FORM: Question = {
 };
 
 export const useQuestions = () => {
-    const [questions, setQuestions] = useState<Question[]>(INITIAL_QUESTIONS);
+    const [questions, setQuestions] = useState<Question[]>([]);
     const [formData, setFormData] = useState<Question>(EMPTY_FORM);
     const [isEditMode, setIsEditMode] = useState(false);
     const [selectedQuestionIndex, setSelectedQuestionIndex] = useState<number | null>(null);
