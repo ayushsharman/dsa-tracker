@@ -1,4 +1,4 @@
-import DSATracker from "./Pages/DSATracker";
+import DSATracker from "./pages/DSATracker";
 
 function App() {
   return (
