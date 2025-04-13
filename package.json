@@ -3,5 +3,8 @@
     "@types/js-cookie": "^3.0.6",
     "git-filter-repo": "^0.0.30",
     "js-cookie": "^3.0.5"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
