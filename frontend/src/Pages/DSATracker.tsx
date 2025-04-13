@@ -13,7 +13,6 @@ const DSATracker = () => {
         questions,
         formData,
         isEditMode,
-        selectedQuestionIndex,
         searchQuery,
         setSearchQuery,
         handleInputChange,
@@ -21,7 +20,6 @@ const DSATracker = () => {
         handleEdit,
         handleDelete,
         toggleDone,
-        setIsEditMode,
         setFormData,
         resetForm
     } = useQuestions();

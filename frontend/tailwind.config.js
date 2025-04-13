@@ -1,13 +1,12 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       backgroundImage: {
-        'custom-bg': "url('background.png')",
+        'custom-bg': "url('/background.png')",
       },
     },
   },
   plugins: [],
 }
-
