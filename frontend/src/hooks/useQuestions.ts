@@ -1,7 +1,6 @@
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, useEffect } from 'react';
 import { Question } from '../types/question';
-
-
+import Cookies from 'js-cookie';
 
 const EMPTY_FORM: Question = {
     topic: "",
@@ -11,12 +10,22 @@ const EMPTY_FORM: Question = {
     notes: ""
 };
 
+const COOKIE_KEY = 'dsa_questions';
+
 export const useQuestions = () => {
-    const [questions, setQuestions] = useState<Question[]>([]);
+    const [questions, setQuestions] = useState<Question[]>(() => {
+        const savedQuestions = Cookies.get(COOKIE_KEY);
+        return savedQuestions ? JSON.parse(savedQuestions) : [];
+    });
     const [formData, setFormData] = useState<Question>(EMPTY_FORM);
     const [isEditMode, setIsEditMode] = useState(false);
     const [selectedQuestionIndex, setSelectedQuestionIndex] = useState<number | null>(null);
     const [searchQuery, setSearchQuery] = useState("");
+
+    // Save questions to cookies whenever they change
+    useEffect(() => {
+        Cookies.set(COOKIE_KEY, JSON.stringify(questions), { expires: 365 }); // Expires in 1 year
+    }, [questions]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
